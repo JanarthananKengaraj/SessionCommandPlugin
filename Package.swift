@@ -18,11 +18,9 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
+        .plugin(name: "GenerateContributors", capability: .command(intent: .custom(verb: "GenerateContributorsList", description: "Creating new text file"), permissions: [.writeToPackageDirectory(reason: "Creating new file in source path")])),
         .target(
             name: "SessionCommandPlugin",
             dependencies: []),
-        .testTarget(
-            name: "SessionCommandPluginTests",
-            dependencies: ["SessionCommandPlugin"]),
     ]
 )
